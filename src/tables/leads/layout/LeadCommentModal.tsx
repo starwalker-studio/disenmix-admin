@@ -7,7 +7,7 @@ import {
   TextField,
 } from "@mui/material";
 import { useState } from "react";
-import { LEAD_STYLE } from "../../styles/leads/leads-style";
+import { LEAD_STYLE } from "../../../styles/leads/leads-style";
 import type { ModalProps } from "../interface/lead.interfaces";
 
 export const LeadCommentModal = ({
@@ -15,15 +15,17 @@ export const LeadCommentModal = ({
   onClose,
   record,
   onSave,
+  saving
 }: ModalProps) => {
   const [comments, setComments] = useState(record?.comments ?? "");
-  const [active, setActive] = useState(record?.client?.active ?? false);
+  const active = record.client?.active ?? false;
 
   return (
     <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
       <DialogTitle sx={LEAD_STYLE.DIALOG_TITLE}>Notas internas</DialogTitle>
       <DialogContent>
         <TextField
+        sx={{ mt: 3 }}
           label="Comentarios"
           multiline
           minRows={4}
@@ -39,18 +41,27 @@ export const LeadCommentModal = ({
         </Button>
 
         <Button
-          sx={LEAD_STYLE.DIALOG_ACTION_BUTTON_ACTIVATE_CLIENT}
-          onClick={() => setActive(true)}
+          sx={
+            active
+            ? LEAD_STYLE.DIALOG_ACTION_BUTTON_CLIENT_ACTIVE
+            : LEAD_STYLE.DIALOG_ACTION_BUTTON_ACTIVATE_CLIENT
+          }
+          onClick={() => onSave({
+            active: true,
+            comments: comments
+          })}
+          disabled={active}
         >
-          Activar cliente
+          {active ? "Cliente activo" : "Activar cliente"}
         </Button>
 
         <Button
           variant="contained"
           onClick={() => onSave({ comments, active })}
           sx={LEAD_STYLE.DIALOG_ACTION_BUTTON_SAVE}
+          disabled={saving}
         >
-          Guardar
+          {saving ? 'Guardando…' : 'Guardar'}
         </Button>
       </DialogActions>
     </Dialog>

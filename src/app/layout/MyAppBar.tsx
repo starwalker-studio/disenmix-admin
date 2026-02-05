@@ -16,7 +16,7 @@ export const MyAppBar = (props: AppBarProps) => {
         <img
           src="/img/logo/logo-darkblue-letters.png"
           alt="Disenmix"
-          style={{ height: 42 }}
+          style={{ height: 45 }}
         />
       </Box>
       <TitlePortal title="Admin"/>

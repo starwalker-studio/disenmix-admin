@@ -5,7 +5,7 @@ export const proDarkTheme = createTheme({
     mode: "dark",
 
     primary: {
-      main: "#04142f",
+      main: "#eff1f5",
     },
 
     secondary: {
@@ -13,13 +13,13 @@ export const proDarkTheme = createTheme({
     },
 
     background: {
-      default: "#323d50ff",
+      default: "#282829",
       paper: "#111827",
     },
 
     text: {
       primary: "#e5e7eb",
-      secondary: "#9ca3af",
+      secondary: "#d6d9dd",
     },
   },
 
@@ -41,12 +41,47 @@ export const proDarkTheme = createTheme({
         },
       },
     },
+    MuiTextField: {
+      defaultProps: {
+        variant: "outlined",
+        fullWidth: true,
+        size: "small",
+        margin: "dense",
+      },
+    },
+
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          borderRadius: 8,
+          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#eff1f5",
+          },
+        },
+        notchedOutline: {
+          border: "solid 2px #eff1f5",
+        },
+      },
+    },
+
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          fontSize: "1rem",
+          "&.Mui-focused": {
+            color: "#eff1f5",
+          },
+        },
+        shrink: {
+          transform: "translate(14px, -9px) scale(0.75)",
+        },
+      },
+    },
 
     MuiPaper: {
       styleOverrides: {
         root: {
-          borderRadius: 12,
-          backgroundImage: "none", // elimina gradientes raros
+          backgroundImage: "none",
         },
       },
     },
@@ -63,7 +98,7 @@ export const proDarkTheme = createTheme({
     MuiDrawer: {
       styleOverrides: {
         root: {
-          backgroundColor: "#020c1dff", // o un tono dark cercano
+          backgroundColor: "#141414ff",
           color: "#e5e7eb",
           borderRight: "none",
         },
@@ -72,9 +107,19 @@ export const proDarkTheme = createTheme({
     MuiTableCell: {
       styleOverrides: {
         root: {
-          padding: "1.2ex"
-        }
-      }
-    }
+          padding: "1.2ex",
+        },
+      },
+    },
+    MuiTableRow: {
+      styleOverrides: {
+        root: {
+          transition: "background-color 0.2s ease",
+          "&.MuiTableRow-hover:hover": {
+            backgroundColor: "#000000",
+          },
+        },
+      },
+    },
   },
 });
